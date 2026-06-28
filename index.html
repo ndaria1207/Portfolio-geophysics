@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ndaru Ria Putri - Geophysics Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Configuration & Animations -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        earth: {
+                            50: '#fdf8f2',
+                            100: '#fbeee0',
+                            200: '#f6dbbe',
+                            300: '#eebc91',
+                            400: '#e39460',
+                            500: '#d77138',
+                            600: '#c8562b',
+                            700: '#a64124',
+                            800: '#853421',
+                            900: '#6b2b1e',
+                        },
+                        seismic: {
+                            blue: '#0ea5e9',
+                            green: '#10b981',
+                            amber: '#f59e0b',
+                            red: '#ef4444'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f19;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d77138;
+        }
+        
+        /* Pulse Animation for Seismic Nodes */
+        @keyframes wave-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 8px var(--tw-shadow-color)); }
+        }
+        .pulse-node {
+            animation: wave-pulse 3s infinite ease-in-out;
+        }
+        
+        /* Print styling for direct CV export */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-layout {
+                display: block !important;
+                background: white !important;
+                color: black !important;
+                padding: 0 !important;
+            }
+            .print-card {
+                border: 1px solid #e2e8f0 !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                color: black !important;
+            }
+            .print-text-dark {
+                color: #1e293b !important;
+                }
+            .print-text-muted {
+                color: #64748b !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-earth-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0b0f19]/80 backdrop-blur-md border-b border-slate-800 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-earth-500 to-amber-500 flex items-center justify-center shadow-lg shadow-earth-500/20">
+                        <i class="fa-solid fa-earth-asia text-white text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg tracking-tight bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Ndaru Ria Putri</span>
+                        <span class="block text-[10px] text-earth-400 font-mono">GEOPHYSICS STUDENT @ UI</span>
+                    </div>
+                </div>
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-earth-400 transition">About</a>
+                    <a href="#subsurface-lab" class="text-sm font-medium text-slate-300 hover:text-earth-400 transition flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Subsurface Lab
+                    </a>
+                    <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-earth-400 transition">Experience</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-earth-400 transition">Skills</a>
+                    <a href="#education" class="text-sm font-medium text-slate-300 hover:text-earth-400 transition">Education</a>
+                    <button onclick="window.print()" class="text-xs bg-slate-800 hover:bg-slate-700 text-white font-medium py-2 px-3.5 rounded-lg border border-slate-700 flex items-center gap-2 transition">
+                        <i class="fa-solid fa-print"></i> Print CV
+                    </button>
+                    <a href="#contact" class="text-xs bg-gradient-to-r from-earth-500 to-amber-600 hover:from-earth-600 hover:to-amber-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg shadow-earth-500/10 transition">
+                        Hire Me
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#0f172a] border-b border-slate-800 px-4 py-4 space-y-3">
+            <a href="#about" class="block text-base font-medium text-slate-300 hover:text-earth-400">About</a>
+            <a href="#subsurface-lab" class="block text-base font-medium text-slate-300 hover:text-earth-400">Subsurface Lab</a>
+            <a href="#experience" class="block text-base font-medium text-slate-300 hover:text-earth-400">Experience</a>
+            <a href="#skills" class="block text-base font-medium text-slate-300 hover:text-earth-400">Skills</a>
+            <a href="#education" class="block text-base font-medium text-slate-300 hover:text-earth-400">Education</a>
+            <div class="flex items-center gap-2 pt-2">
+                <button onclick="window.print()" class="flex-1 text-center text-sm bg-slate-800 text-white font-medium py-2 px-3 rounded-lg border border-slate-700">
+                    <i class="fa-solid fa-print mr-1"></i> Print CV
+                </button>
+                <a href="#contact" class="flex-1 text-center text-sm bg-earth-500 text-white font-semibold py-2 px-3 rounded-lg">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="about" class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden border-b border-slate-900">
+        <!-- Background Canvas for Real-time Seismic Waves -->
+        <div class="absolute inset-0 z-0 opacity-40">
+            <canvas id="seismic-canvas" class="w-full h-full"></canvas>
+        </div>
+        <!-- Radial shadow glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-earth-500/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Text Left -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-medium text-earth-300">
+                        <span class="w-2 h-2 rounded-full bg-earth-500 animate-ping"></span>
+                        Available for Full-time & Geoscience Projects
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight">
+                        Hi, I'm <span class="bg-gradient-to-r from-earth-400 via-amber-400 to-yellow-300 bg-clip-text text-transparent">Ndaru Ria Putri</span>
+                    </h1>
+                    
+                    <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-normal max-w-2xl mx-auto lg:mx-0">
+                        A final year <strong class="text-white font-semibold">Geophysics</strong> student at <strong class="text-yellow-400 font-semibold">Universitas Indonesia</strong>. 
+                        Specializing in seismic data processing, geological modeling, and geophysical acquisition. Passioned about applying advanced computational tools to map resources and solve environmental challenges.
+                    </p>
+
+                    <!-- Contact Pills -->
+                    <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+                        <a href="mailto:riaputrind08@gmail.com" class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 hover:border-slate-700 px-4 py-2 rounded-xl text-sm text-slate-300 transition">
+                            <i class="fa-solid fa-envelope text-earth-400"></i> riaputrind08@gmail.com
+                        </a>
+                        <a href="https://linkedin.com/in/ndaru-ria-putri" target="_blank" class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 hover:border-slate-700 px-4 py-2 rounded-xl text-sm text-slate-300 transition">
+                            <i class="fa-brands fa-linkedin text-blue-400"></i> LinkedIn
+                        </a>
+                        <span class="flex items-center gap-2 bg-slate-900/60 border border-slate-800 px-4 py-2 rounded-xl text-sm text-slate-300">
+                            <i class="fa-solid fa-map-pin text-red-400"></i> Tangerang / Depok
+                        </span>
+                    </div>
+
+                    <!-- Call To Actions -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start pt-4">
+                        <a href="#subsurface-lab" class="w-full sm:w-auto text-center bg-gradient-to-r from-earth-500 to-amber-600 hover:from-earth-600 hover:to-amber-700 text-white font-bold py-3.5 px-8 rounded-xl shadow-lg shadow-earth-500/20 flex items-center justify-center gap-2 transition transform hover:-translate-y-0.5">
+                            <i class="fa-solid fa-wave-square"></i> Explore Interactive Projects
+                        </a>
+                        <a href="#experience" class="w-full sm:w-auto text-center bg-slate-800/80 hover:bg-slate-700 text-white font-semibold py-3.5 px-6 rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition">
+                            See Work Experience <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Profile Photo & Key Stats Right -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 md:w-88 md:h-88 rounded-3xl overflow-hidden border-2 border-earth-500/30 p-2 bg-slate-900/40 backdrop-blur shadow-2xl group">
+                        <!-- Seismic Grid overlay -->
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,#33415510_1px,transparent_1px),linear-gradient(to_bottom,#33415510_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none z-10"></div>
+                        
+                        <!-- Main Image frame -->
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-slate-950 flex items-center justify-center">
+                            
+                            <!-- Foto Utama -->
+                            <img id="profile-img" 
+                                 src="https://placehold.co/400x500/2b140b/e39460?text=Klik+Sini+Untuk%0AUpload+Foto+Ndaru" 
+                                 alt="Ndaru Ria Putri" 
+                                 class="w-full h-full object-cover z-0 transition duration-500 group-hover:scale-105"
+                                 onerror="this.src='https://placehold.co/400x500/0f172a/94a3b8?text=Ndaru+Ria+Putri'" />
+
+                            <!-- Overlay Gelap saat Kursor Hover -->
+                            <div onclick="triggerPhotoUpload()" class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center cursor-pointer z-20">
+                                <div class="w-12 h-12 rounded-full bg-earth-500 flex items-center justify-center text-white text-lg shadow-lg mb-2">
+                                    <i class="fa-solid fa-camera"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-white tracking-wide">Upload / Ganti Foto</span>
+                                <span class="text-[10px] text-slate-400 mt-1">(Mendukung file JPG, PNG)</span>
+                            </div>
+
+                            <!-- Input file tersembunyi untuk proses upload langsung di browser preview -->
+                            <input type="file" id="photo-upload-input" accept="image/*" class="hidden" onchange="previewUploadedPhoto(event)">
+
+                            <div class="absolute top-4 left-4 bg-slate-900/90 border border-slate-700 px-2.5 py-1 rounded-md text-[10px] text-white font-mono tracking-wider z-20">
+                                GEOPHYSICIST
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Metric highlight banner -->
+    <section class="py-10 bg-slate-950 border-b border-slate-900 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-800/60">
+                    <p class="text-3xl sm:text-4xl font-extrabold text-earth-400">100%</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">Doc Accuracy (Project Aquinas)</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-800/60">
+                    <p class="text-3xl sm:text-4xl font-extrabold text-emerald-400">115+</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">HVSR Data Slices Analyzed</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-800/60">
+                    <p class="text-3xl sm:text-4xl font-extrabold text-amber-400">9 Lines</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">2D Seismic Mapping Done</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-800/60">
+                    <p class="text-3xl sm:text-4xl font-extrabold text-blue-400">+30%</p>
+                    <p class="text-xs text-slate-400 mt-1 uppercase tracking-wider font-mono">Tutor Grade Improvement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE GEOPHYSICS SUBSURFACE LAB SECTION -->
+    <section id="subsurface-lab" class="py-20 bg-slate-950 relative no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <i class="fa-solid fa-layer-group text-earth-500 mr-2"></i> Interactive Subsurface Lab
+                </h2>
+                <p class="text-slate-400 mt-3 text-base">
+                    Click through my research projects below to explore simulated subsurface anomalies, cross-sections, or upload your actual scientific survey charts manually.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Controller & Info Card (Left 5 cols) -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+                        <span class="text-xs text-earth-400 font-mono tracking-wider uppercase font-semibold">Select Research Project</span>
+                        
+                        <!-- Dynamic Buttons to switch projects -->
+                        <div class="space-y-3 mt-4">
+                            <!-- Button 1 -->
+                            <button onclick="switchProject('pertamina')" id="btn-pertamina" class="w-full text-left p-4 rounded-xl border border-earth-500 bg-earth-500/10 text-white transition flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 group-hover:scale-105 transition">
+                                        <i class="fa-solid fa-oil-well"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">2D Seismic Mapping (Pertamina EP)</p>
+                                        <p class="text-xs text-slate-300">Banggai Basin, Central Sulawesi</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-400 group-hover:translate-x-1 transition"></i>
+                            </button>
+
+                            <!-- Button 2 (Palembang HVSR Inversion) -->
+                            <button onclick="switchProject('palembang')" id="btn-palembang" class="w-full text-left p-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-300 transition flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-400">
+                                        <i class="fa-solid fa-chart-area"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Inversi HVSR Palembang (Lapangan X)</p>
+                                        <p class="text-xs text-slate-400">Lipatan & Anomali JOS 17</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 group-hover:translate-x-1 transition"></i>
+                            </button>
+
+                            <!-- Button 3 -->
+                            <button onclick="switchProject('brin')" id="btn-brin" class="w-full text-left p-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-300 transition flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                                        <i class="fa-solid fa-droplet"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Water Table Mapping (BRIN)</p>
+                                        <p class="text-xs text-slate-400">Pringsewu Aquifer, Lampung</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 group-hover:translate-x-1 transition"></i>
+                            </button>
+
+                            <!-- Button 4 -->
+                            <button onclick="switchProject('thesis')" id="btn-thesis" class="w-full text-left p-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-300 transition flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                        <i class="fa-solid fa-fire"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Thesis: Shallow Gas Inversion</p>
+                                        <p class="text-xs text-slate-400">LFPS Analysis, West Kalimantan</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 group-hover:translate-x-1 transition"></i>
+                            </button>
+
+                            <!-- Button 5 -->
+                            <button onclick="switchProject('aquinas')" id="btn-aquinas" class="w-full text-left p-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-300 transition flex items-center justify-between group">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400">
+                                        <i class="fa-solid fa-circle-exclamation"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-sm font-bold">Landfill Contamination (GWB)</p>
+                                        <p class="text-xs text-slate-400">Project Aquinas, Cipayung TPA</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-chevron-right text-slate-500 group-hover:translate-x-1 transition"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Selected Project Detail Summary Info -->
+                    <div id="project-info-card" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 text-slate-300">
+                        <h4 id="info-title" class="text-lg font-bold text-white flex items-center gap-2">
+                            2D Seismic Mapping - Banggai Basin
+                        </h4>
+                        <p id="info-method" class="text-xs text-earth-400 font-mono mt-1">Method: Reflection Seismic Interpretation (RMS Amplitude & Cosine Phase)</p>
+                        
+                        <div class="mt-4 space-y-3 text-sm">
+                            <p id="info-desc">
+                                Processed 9 lines of 2D seismic dataset in the "X" structure. Delineated local structural geometry, mapping fault networks and determining reservoir thickness markers to isolate target horizons.
+                            </p>
+                            <div class="border-t border-slate-800 pt-3">
+                                <span class="text-xs font-semibold text-white">Interactive Highlight:</span>
+                                <ul id="info-bullets" class="list-disc list-inside mt-2 space-y-1 text-slate-400 text-xs">
+                                    <li>Identified listric and normal faults defining the structural traps.</li>
+                                    <li>Mapped gas/fluid indicator boundaries utilizing Root Mean Square (RMS) amplitude anomalies.</li>
+                                    <li>Delineated carbonate facies transitions in the Banggai Basin.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Live Subsurface Render Screen (Right 7 cols) -->
+                <div class="lg:col-span-7 space-y-4">
+                    
+                    <!-- Mode Selector Tab (Simulation vs Real Chart Upload) -->
+                    <div class="flex items-center justify-between bg-slate-900 border border-slate-800 p-2 rounded-xl">
+                        <div class="flex gap-2 bg-slate-950 p-1 rounded-lg border border-slate-850">
+                            <button id="view-sim-btn" onclick="setVisualizerMode('sim')" class="text-xs px-3 py-1.5 rounded-lg font-mono font-bold bg-earth-500 text-white transition">
+                                <i class="fa-solid fa-display mr-1"></i> SIMULATION
+                            </button>
+                            <button id="view-real-btn" onclick="setVisualizerMode('real')" class="text-xs px-3 py-1.5 rounded-lg font-mono font-bold text-slate-400 hover:text-white transition">
+                                <i class="fa-solid fa-file-image mr-1"></i> REAL DATA CHART
+                            </button>
+                        </div>
+                        
+                        <!-- Manual Image Upload Button (shows when Real Data Chart is active) -->
+                        <div id="chart-uploader-trigger" class="hidden">
+                            <button onclick="triggerChartUpload()" class="bg-slate-800 hover:bg-slate-700 text-white font-mono text-[11px] py-1.5 px-3 rounded-lg border border-slate-700 transition flex items-center gap-1.5">
+                                <i class="fa-solid fa-upload text-amber-500"></i> Upload Chart Image
+                            </button>
+                            <!-- Hidden input file -->
+                            <input type="file" id="chart-upload-input" accept="image/*" class="hidden" onchange="previewUploadedChart(event)">
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Palembang Depth Selector (Slices Vs50 - Vs500) -->
+                    <div id="palembang-depth-selector" class="hidden flex-wrap items-center justify-center gap-2 bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl">
+                        <span class="text-xs font-mono text-slate-400 mr-2"><i class="fa-solid fa-layer-group text-orange-400 mr-1"></i> Pilih Kedalaman Vs:</span>
+                        <button onclick="changePalembangDepth(50)" id="depth-btn-50" class="px-3 py-1 text-xs font-mono bg-earth-500 text-white rounded font-bold border border-earth-600 transition">Vs50</button>
+                        <button onclick="changePalembangDepth(100)" id="depth-btn-100" class="px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition">Vs100</button>
+                        <button onclick="changePalembangDepth(200)" id="depth-btn-200" class="px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition">Vs200</button>
+                        <button onclick="changePalembangDepth(300)" id="depth-btn-300" class="px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition">Vs300</button>
+                        <button onclick="changePalembangDepth(400)" id="depth-btn-400" class="px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition">Vs400</button>
+                        <button onclick="changePalembangDepth(500)" id="depth-btn-500" class="px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition">Vs500</button>
+                    </div>
+
+                    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 shadow-2xl relative overflow-hidden">
+                        <!-- Top status bar -->
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800/80 mb-3 text-xs font-mono">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></span>
+                                <span class="text-slate-400" id="visualizer-status">RENDERING: SEISMIC REFLECTION INTERPRETATION</span>
+                            </div>
+                            <span class="text-slate-500 text-[10px]">COORDS: Lat -2.290, Lon 103.618</span>
+                        </div>
+
+                        <!-- Main Screen Display Frame -->
+                        <div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-slate-950 border border-slate-850">
+                            
+                            <!-- INTERACTIVE SIMULATION CANVAS VIEW -->
+                            <div id="sim-view-wrapper" class="absolute inset-0">
+                                <!-- Legend Overlays -->
+                                <div class="absolute top-3 left-3 bg-slate-900/95 border border-slate-800 px-3 py-2 rounded-lg text-[10px] space-y-1.5 pointer-events-none z-10 font-mono">
+                                    <p class="text-white font-semibold border-b border-slate-800 pb-1 mb-1 text-center">LEGEND</p>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-2 bg-gradient-to-r from-red-500 to-amber-500 rounded" id="legend-color-1"></span>
+                                        <span class="text-slate-300" id="legend-1">Hydrocarbon Target / High Amp</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-2 bg-slate-700 rounded" id="legend-color-2"></span>
+                                        <span class="text-slate-300" id="legend-2">Basement / Shales</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="w-3 h-0.5 border-t-2 border-dashed border-red-500" id="legend-line-style"></span>
+                                        <span class="text-slate-300" id="legend-3">Interpreted Faults</span>
+                                    </div>
+                                </div>
+
+                                <!-- Interactive overlay prompts -->
+                                <div class="absolute bottom-3 right-3 bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-lg text-[10px] text-earth-300 font-mono pointer-events-none animate-bounce">
+                                    <i class="fa-solid fa-hand-pointer mr-1"></i> Click nodes in canvas to scan
+                                </div>
+
+                                <!-- Main Visualizer Canvas -->
+                                <canvas id="subsurface-canvas" class="w-full h-full cursor-pointer"></canvas>
+                            </div>
+
+                            <!-- REAL MANUAL CHART IMAGE PREVIEW VIEW -->
+                            <div id="real-view-wrapper" class="hidden absolute inset-0 bg-slate-950 flex flex-col items-center justify-center p-2">
+                                <img id="uploaded-chart-img" class="max-w-full max-h-full object-contain rounded hidden" alt="Scientific Research Chart" />
+                                
+                                <!-- Empty state uploader placeholder inside visualizer -->
+                                <div id="chart-upload-placeholder" onclick="triggerChartUpload()" class="flex flex-col items-center justify-center p-6 text-center cursor-pointer hover:bg-slate-900/50 rounded-xl border border-dashed border-slate-700 w-[80%] h-[80%] transition">
+                                    <div class="w-16 h-16 rounded-full bg-slate-900 flex items-center justify-center border border-slate-800 text-earth-400 text-3xl mb-4 shadow-lg animate-bounce">
+                                        <i class="fa-solid fa-file-arrow-up"></i>
+                                    </div>
+                                    <h5 class="text-sm font-bold text-white mb-2">Unggah Manual Gambar Hasil Riset</h5>
+                                    <p class="text-[11px] text-slate-400 max-w-sm mb-3">
+                                        Pilih file <strong>Presentasi - Geophysics Portfolio A Journey Through My Professional Expertise.jpg</strong> atau bagan peta kontur riset aslimu dari perangkat.
+                                    </p>
+                                    <span class="text-[10px] text-earth-500 font-mono bg-earth-500/10 border border-earth-500/20 px-2 py-1 rounded">Mendukung berkas JPG, PNG</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Control buttons at bottom of canvas -->
+                        <div class="mt-3 flex items-center justify-between text-xs font-mono text-slate-400">
+                            <span id="canvas-grid-unit">GRID UNIT: METER (x100)</span>
+                            <div class="flex gap-2">
+                                <button id="wave-pulse-btn" onclick="triggerSeismicPulse()" class="bg-slate-800 hover:bg-slate-700 text-white px-3 py-1 rounded border border-slate-700 transition">
+                                    <i class="fa-solid fa-bolt text-amber-400 mr-1"></i> Trigger Seismic Wave
+                                </button>
+                                <button onclick="resetCanvasView()" class="bg-slate-800 hover:bg-slate-700 text-white px-3 py-1 rounded border border-slate-700 transition">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Reset
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="py-20 bg-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 no-print">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <i class="fa-solid fa-briefcase text-earth-500 mr-2"></i> Work Experiences
+                </h2>
+                <p class="text-slate-400 mt-3 text-base">
+                    Comprehensive geophysics field investigation, corporate internship, and leadership in geological mapping projects.
+                </p>
+            </div>
+
+            <div class="relative border-l-2 border-slate-800 ml-4 md:ml-32 pl-6 md:pl-10 space-y-12">
+                
+                <!-- Experience Item 1: Pertamina EP Cepu -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] md:-left-[51px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-red-500/20 border-2 border-red-500 flex items-center justify-center text-red-400 text-xs md:text-sm shadow-md group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-oil-well"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-44 top-1.5 w-32 text-right text-sm font-mono text-slate-400 font-semibold">
+                        May 2026 - Jun 2026
+                    </div>
+                    
+                    <div class="bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-6 rounded-2xl transition duration-300 shadow-lg print-card">
+                        <span class="md:hidden block text-xs font-mono text-slate-400 mb-2 font-bold uppercase tracking-wider">May 2026 - June 2026</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white print-text-dark">Geophysics Intern</h3>
+                                <p class="text-earth-400 font-semibold text-sm">PT Pertamina EP Cepu</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-red-500/10 text-red-400 border border-red-500/20 w-fit">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Jakarta Selatan (HQ)
+                            </span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside print-text-muted">
+                            <li>Processed and analyzed a 2D seismic dataset consisting of 9 lines to map and interpret structural features within "X" Structure in the Banggai Basin.</li>
+                            <li>Utilized <strong class="text-white font-semibold">RMS Amplitude</strong> and <strong class="text-white font-semibold">Cosine Phase</strong> attributes to enhance structural fault interpretation and delineate gas/lithological boundary variations.</li>
+                            <li>Identified geological trapping configurations to evaluate subsurface hydrocarbon reservoirs prospect potential.</li>
+                        </ul>
+                        <!-- Tech Tags -->
+                        <div class="flex flex-wrap gap-2 mt-4 no-print">
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Petrel</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">RMS Amplitude</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Banggai Basin</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">2D Seismic</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2: BRIN -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] md:-left-[51px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-emerald-500/20 border-2 border-emerald-500 flex items-center justify-center text-emerald-400 text-xs md:text-sm shadow-md group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-microscope"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-44 top-1.5 w-32 text-right text-sm font-mono text-slate-400 font-semibold">
+                        Feb 2025 - Jul 2025
+                    </div>
+                    
+                    <div class="bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-6 rounded-2xl transition duration-300 shadow-lg print-card">
+                        <span class="md:hidden block text-xs font-mono text-slate-400 mb-2 font-bold uppercase tracking-wider">Feb 2025 - July 2025</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white print-text-dark">Geophysics Intern</h3>
+                                <p class="text-earth-400 font-semibold text-sm">BRIN (Badan Riset dan Inovasi Negara)</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 w-fit">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Cibinong, Jawa Barat
+                            </span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside print-text-muted">
+                            <li>Processed ambient noise data from a hydrocarbon reservoir of "X" basin area in South Sumatra using Horizontal to Vertical Spectral Ratio (<strong class="text-white">HVSR) Inversion</strong> Method.</li>
+                            <li>Generated subsurface Vs shear wave inversion depth profiles mapping shallow depth prospective zones for community local drilling efforts.</li>
+                            <li>Collaborated with a multi-disciplinary team of 7 including 4 BRIN senior researchers to identify freshwater aquifers for agricultural irrigation in Pringsewu (Lampung) by integrating gravity, HVSR sections, and resistivity maps.</li>
+                            <li>Resulted in 4 sliced subsurface profiles indicating shallow low Vs anomalies with <strong class="text-white">100% correlation accuracy</strong> with resistivity models.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4 no-print">
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">HVSR Inversion</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Geopsy</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Resistivity mapping</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Surfer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3: GWB Project Aquinas -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] md:-left-[51px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-amber-500/20 border-2 border-amber-500 flex items-center justify-center text-amber-400 text-xs md:text-sm shadow-md group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-44 top-1.5 w-32 text-right text-sm font-mono text-slate-400 font-semibold">
+                        Aug 2024 - Aug 2025
+                    </div>
+                    
+                    <div class="bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-6 rounded-2xl transition duration-300 shadow-lg print-card">
+                        <span class="md:hidden block text-xs font-mono text-slate-400 mb-2 font-bold uppercase tracking-wider">August 2024 - August 2025</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white print-text-dark">Junior Researcher & Secretary</h3>
+                                <p class="text-earth-400 font-semibold text-sm">Geoscientists Without Borders (GWB) - SEG Student Chapter UI</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20 w-fit">
+                                <i class="fa-solid fa-people-group mr-1"></i> Cipayung Landfill Area
+                            </span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside print-text-muted">
+                            <li>Led Project Aquinas technical operations analyzing environmental soil and water contamination surrounding the TPA Cipayung landfill.</li>
+                            <li>Deployed Ground Penetrating Radar (GPR) impulses, Resistivity profile soundings, and geochemical water testing arrays.</li>
+                            <li>As <strong class="text-white">Project Secretary</strong>, managed legal permissions, prepared official grant proposals, and designed archives for 100% of the cross-division documentation.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-4 no-print">
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">GPR (Ground Penetrating Radar)</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">ReflexW</span>
+                            <span class="text-xs bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-mono">Geochemistry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 4: TerraFind Exploration -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] md:-left-[51px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-blue-500/20 border-2 border-blue-500 flex items-center justify-center text-blue-400 text-xs md:text-sm shadow-md group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-44 top-1.5 w-32 text-right text-sm font-mono text-slate-400 font-semibold">
+                        Aug 2024 - Dec 2024
+                    </div>
+                    
+                    <div class="bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-6 rounded-2xl transition duration-300 shadow-lg print-card">
+                        <span class="md:hidden block text-xs font-mono text-slate-400 mb-2 font-bold uppercase tracking-wider">August 2024 - Dec 2024</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white print-text-dark">Junior Geophysics Researcher & Secretary</h3>
+                                <p class="text-earth-400 font-semibold text-sm">TerraFind Exploration</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-emerald-500/20 w-fit">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Jakarta Utara
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-400 italic mt-2">An UI Initiative organization solving ground water and mineralization challenges in Indonesia.</p>
+                        <ul class="mt-3 space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside print-text-muted">
+                            <li>Collaborated with a team of 23 researchers mapping the coastal shallow freshwater level of Jakarta Utara.</li>
+                            <li>Generated 8 high-resolution 2D subsurface electromagnetic sections showing structural salt-water intrusion zones using GPR.</li>
+                            <li>Successfully expanded research territories by 100% by managing land clearance and government administrative permits.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 5: Field Mapping Kulon Progo -->
+                <div class="relative group">
+                    <div class="absolute -left-[35px] md:-left-[51px] top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full bg-violet-500/20 border-2 border-violet-500 flex items-center justify-center text-violet-400 text-xs md:text-sm shadow-md group-hover:scale-110 transition duration-300">
+                        <i class="fa-solid fa-mountain"></i>
+                    </div>
+                    <div class="hidden md:block absolute -left-44 top-1.5 w-32 text-right text-sm font-mono text-slate-400 font-semibold">
+                        May 2024
+                    </div>
+                    
+                    <div class="bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-6 rounded-2xl transition duration-300 shadow-lg print-card">
+                        <span class="md:hidden block text-xs font-mono text-slate-400 mb-2 font-bold uppercase tracking-wider">May 2024</span>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white print-text-dark">Junior Geophysics Field Researcher</h3>
+                                <p class="text-earth-400 font-semibold text-sm">Kuliah Lapangan Metode Geofisika UI</p>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20 w-fit">
+                                <i class="fa-solid fa-location-dot mr-1"></i> Kulon Progo, Yogyakarta
+                            </span>
+                        </div>
+                        <ul class="mt-4 space-y-2 text-sm text-slate-300 leading-relaxed list-disc list-inside print-text-muted">
+                            <li>Participated with 15 fellow geophysicists in multi-disciplinary high-intensity field acquisition campaigns over 5 days.</li>
+                            <li>Acquired 5 core geophysical method records: <strong class="text-white">MASW (Active Seismic)</strong>, gravity, magnetics, resistivity, and GPR.</li>
+                            <li>Mapped 3 critical tectonic anomalies including geological faults, palaeo-river aquifers, and dangerous karst sinkhole features.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GEOPHYSICS SKILLS MATRIX -->
+    <section id="skills" class="py-20 bg-slate-950 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    <i class="fa-solid fa-toolbox text-earth-500 mr-2"></i> Technical Skills & Software
+                </h2>
+                <p class="text-slate-400 mt-3 text-base">
+                    Core scientific software tools, field acquisition competence, and programming experience for geophysics computations.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Geoscience Software -->
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-5">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <div class="w-10 h-10 rounded-lg bg-earth-500/10 flex items-center justify-center text-earth-400">
+                            <i class="fa-solid fa-desktop text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Geophysics Software</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Schlumberger Petrel</span>
+                                <span class="text-earth-400">Advance</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-earth-500 h-full w-[85%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Geopsy (HVSR processing)</span>
+                                <span class="text-earth-400">Expert</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-earth-500 h-full w-[95%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">ReflexW (GPR analysis)</span>
+                                <span class="text-earth-400">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-earth-500 h-full w-[70%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Oasis Montaj / Surfer</span>
+                                <span class="text-earth-400">Advance</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-earth-500 h-full w-[80%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Leapfrog Geo & QGIS</span>
+                                <span class="text-earth-400">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-earth-500 h-full w-[65%] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Programming & Core Skills -->
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-5">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                            <i class="fa-solid fa-code text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Programming & Analysis</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Python (Pandas, NumPy)</span>
+                                <span class="text-emerald-400">Basic/Intermediate</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full w-[60%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">MATLAB (Seismic Waveforms)</span>
+                                <span class="text-emerald-400">Basic</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full w-[45%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Microsoft Excel (Advanced)</span>
+                                <span class="text-emerald-400">Excellent</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full w-[90%] rounded-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1">
+                                <span class="text-slate-300">Geotechnical Modeling</span>
+                                <span class="text-emerald-400">Advance</span>
+                            </div>
+                            <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                                <div class="bg-emerald-500 h-full w-[75%] rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Field Acquisition & Methods -->
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-xl space-y-4">
+                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400">
+                            <i class="fa-solid fa-compass text-lg"></i>
+                        </div>
+                        <h3 class="font-bold text-white text-lg">Acquisition Methods</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 font-mono">Expertise deploying structural survey nodes and geophysical apparatus:</p>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> HVSR Ambient Noise
+                        </span>
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> Seismics Refraction / Reflection
+                        </span>
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> GPR Ground Penetrating Radar
+                        </span>
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> Resistivity (Geolistrik)
+                        </span>
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> Gravity & Magnetics survey
+                        </span>
+                        <span class="text-xs bg-slate-950 text-slate-300 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle text-[6px] text-amber-400"></i> LFPS Inversion
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION & LEADERSHIP SECTION -->
+    <section id="education" class="py-20 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Education Side -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-earth-500"></i> Education
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-slate-950 border border-slate-850 p-6 rounded-2xl relative overflow-hidden group hover:border-slate-700 transition duration-300 print-card">
+                            <div class="absolute top-0 right-0 bg-yellow-400/10 text-yellow-500 px-3.5 py-1 text-xs font-mono font-semibold rounded-bl-xl uppercase">
+                                Top Tier Geophysics
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">Expected Graduation: June 2026</span>
+                            <h3 class="text-xl font-bold text-white mt-1 print-text-dark">Universitas Indonesia</h3>
+                            <p class="text-slate-300 text-sm print-text-dark font-medium">Bachelor of Science in Geophysics</p>
+                            <p class="text-slate-400 text-xs mt-1 print-text-muted">Aug 2022 - Present</p>
+                            
+                            <div class="border-t border-slate-850 mt-4 pt-4 text-xs text-slate-400 space-y-2">
+                                <p class="text-slate-300 font-medium">Notable Achievement/Thesis:</p>
+                                <p class="italic text-slate-400 leading-relaxed">
+                                    "Processed Low Frequency Passive Seismic (LFPS) anomaly markers to locate Shallow Hydrocarbon Gas deposits in West Kalimantan for Bachelor Graduation Thesis."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leadership & Organization Side -->
+                <div>
+                    <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-earth-500"></i> Organization Achievements
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-slate-950 border border-slate-850 p-6 rounded-2xl hover:border-slate-700 transition duration-300 print-card">
+                            <span class="text-xs font-mono text-slate-500">Jan 2023 - Nov 2023</span>
+                            <h3 class="text-xl font-bold text-white mt-1 print-text-dark">BEM FMIPA Universitas Indonesia</h3>
+                            <p class="text-slate-300 text-sm font-semibold text-earth-400">Staff of Science Department</p>
+                            
+                            <ul class="mt-4 space-y-2 text-xs text-slate-400 list-disc list-inside print-text-muted">
+                                <li><strong class="text-white">Secretary of UISO 2023:</strong> Managed complex student science olympic finance reporting, increasing UI Science Olympic project revenue by <span class="text-emerald-400 font-bold">+20%</span>.</li>
+                                <li><strong class="text-white">Content Creator Info Lomba:</strong> Authored creative academic contents for official BEM UI accounts, boosting social engagement benchmarks by <span class="text-emerald-400 font-bold">20%</span>.</li>
+                                <li><strong class="text-white">Deputy of Quiz Division (MIPA Towards Olympiad):</strong> Structured training regimens, resulting in FMIPA securing First Place victory in structural regional olympiad.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RECRUITER CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-slate-950 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-850 p-8 md:p-12 rounded-3xl shadow-2xl relative overflow-hidden">
+                <!-- Glowing sphere decor -->
+                <div class="absolute -top-12 -right-12 w-64 h-64 bg-earth-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                    
+                    <!-- Text Contact info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <span class="text-xs font-mono text-earth-400 tracking-wider uppercase font-bold">Recruiter Action Center</span>
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                            Hire Ndaru Ria Putri for your next exploration campaign.
+                        </h2>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Have questions or want to jump straight to technical interviews? Copy my quick credentials or generate an immediate email invitation using the live template generator on the right.
+                        </p>
+                        
+                        <!-- Clipboard tools -->
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                                <span class="text-slate-400"><i class="fa-solid fa-envelope text-red-400 mr-2"></i> riaputrind08@gmail.com</span>
+                                <button onclick="copyToClipboard('riaputrind08@gmail.com')" class="text-earth-400 hover:text-earth-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                                <span class="text-slate-400"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> 08998751258</span>
+                                <button onclick="copyToClipboard('08998751258')" class="text-earth-400 hover:text-earth-300 flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Email Template Generator -->
+                    <div class="lg:col-span-7 bg-slate-950 p-6 rounded-2xl border border-slate-850">
+                        <h3 class="font-bold text-white text-md flex items-center gap-2 mb-4">
+                            <i class="fa-solid fa-envelope-open-text text-amber-500"></i> Interactive Recruiter Email Sender
+                        </h3>
+                        
+                        <!-- Subject selector -->
+                        <div class="space-y-4 text-xs">
+                            <div>
+                                <label class="block text-slate-300 mb-1.5 font-medium">Select Invitation Type</label>
+                                <select id="email-type" onchange="updateEmailTemplate()" class="w-full bg-slate-900 border border-slate-800 text-slate-300 p-2.5 rounded-lg focus:outline-none focus:border-earth-500">
+                                    <option value="interview">1st Stage Technical Interview Offer</option>
+                                    <option value="consulting">Geological / Field Survey Inquiry</option>
+                                    <option value="chat">Informative HR Coffee Chat</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-slate-300 mb-1.5 font-medium">Company Name</label>
+                                <input type="text" id="company-input" onkeyup="updateEmailTemplate()" placeholder="e.g. PT Pertamina, Schlumberger, BRIN, Chevron" class="w-full bg-slate-900 border border-slate-800 text-slate-300 p-2.5 rounded-lg focus:outline-none focus:border-earth-500">
+                            </div>
+
+                            <!-- Mock Email preview -->
+                            <div class="p-4 bg-slate-900 border border-slate-850 rounded-xl space-y-2 relative">
+                                <span class="absolute top-2 right-2 text-[10px] text-slate-500 font-mono">LIVE PREVIEW</span>
+                                <div class="text-slate-500 font-mono">Subject: <span class="text-white" id="email-preview-subject">Interview Offer - Ndaru Ria Putri</span></div>
+                                <div class="border-t border-slate-850 my-2"></div>
+                                <p class="text-slate-300 font-serif leading-relaxed h-28 overflow-y-auto" id="email-preview-body">
+                                    Dear Ndaru Ria Putri, 
+                                    We reviewed your impressive geophysics portfolio. We are highly interested in scheduling an interview to discuss your experience in 2D seismic processing & HVSR inversion.
+                                </p>
+                            </div>
+
+                            <!-- Action button -->
+                            <button onclick="sendEmailDirect()" class="w-full bg-gradient-to-r from-earth-500 to-amber-600 hover:from-earth-600 hover:to-amber-700 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition text-sm">
+                                <i class="fa-solid fa-paper-plane"></i> Send Direct Email Invite
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-slate-900 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+            <p>© 2026 Ndaru Ria Putri. All rights reserved.</p>
+            <p class="font-mono text-[10px]">Geophysical Data Processing & Reservoir Mapping Specialist</p>
+        </div>
+    </footer>
+
+
+    <!-- JAVASCRIPT SYSTEM ENGINE -->
+    <script>
+        
+        // Memicu jendela pilih file di komputer
+        function triggerPhotoUpload() {
+            document.getElementById('photo-upload-input').click();
+        }
+
+        // Membaca file gambar yang dipilih dan menampilkannya di halaman web
+        function previewUploadedPhoto(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImg = document.getElementById('profile-img');
+                    profileImg.src = e.target.result;
+                    localStorage.setItem('ndaru_uploaded_photo', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Memicu jendela pilih file diagram riset asli
+        function triggerChartUpload() {
+            document.getElementById('chart-upload-input').click();
+        }
+
+        // Membaca file diagram riset yang diunggah secara manual
+        function previewUploadedChart(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const chartImg = document.getElementById('uploaded-chart-img');
+                    const placeholder = document.getElementById('chart-upload-placeholder');
+                    
+                    chartImg.src = e.target.result;
+                    chartImg.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                    
+                    // Simpan sementara di local storage agar persisten saat demonstrasi
+                    localStorage.setItem('ndaru_uploaded_chart_' + currentProjectKey, e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Setup visualizer view mode toggler (SIM vs REAL CHART)
+        let visualizerMode = 'sim'; // default is sim
+        function setVisualizerMode(mode) {
+            visualizerMode = mode;
+            
+            const simBtn = document.getElementById('view-sim-btn');
+            const realBtn = document.getElementById('view-real-btn');
+            const simWrapper = document.getElementById('sim-view-wrapper');
+            const realWrapper = document.getElementById('real-view-wrapper');
+            const uploaderTrigger = document.getElementById('chart-uploader-trigger');
+            const wavePulseBtn = document.getElementById('wave-pulse-btn');
+
+            if (mode === 'sim') {
+                simBtn.className = "text-xs px-3 py-1.5 rounded-lg font-mono font-bold bg-earth-500 text-white transition";
+                realBtn.className = "text-xs px-3 py-1.5 rounded-lg font-mono font-bold text-slate-400 hover:text-white transition";
+                simWrapper.classList.remove('hidden');
+                realWrapper.classList.add('hidden');
+                uploaderTrigger.classList.add('hidden');
+                wavePulseBtn.removeAttribute('disabled');
+                wavePulseBtn.classList.remove('opacity-50');
+            } else {
+                realBtn.className = "text-xs px-3 py-1.5 rounded-lg font-mono font-bold bg-earth-500 text-white transition";
+                simBtn.className = "text-xs px-3 py-1.5 rounded-lg font-mono font-bold text-slate-400 hover:text-white transition";
+                realWrapper.classList.remove('hidden');
+                simWrapper.classList.add('hidden');
+                uploaderTrigger.classList.remove('hidden');
+                wavePulseBtn.setAttribute('disabled', 'true');
+                wavePulseBtn.classList.add('opacity-50');
+                
+                // Load saved manual image if any
+                const savedChart = localStorage.getItem('ndaru_uploaded_chart_' + currentProjectKey);
+                const chartImg = document.getElementById('uploaded-chart-img');
+                const placeholder = document.getElementById('chart-upload-placeholder');
+                if (savedChart) {
+                    chartImg.src = savedChart;
+                    chartImg.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                } else {
+                    chartImg.classList.add('hidden');
+                    placeholder.classList.remove('hidden');
+                }
+            }
+        }
+
+        // Cek apakah sebelumnya pengguna pernah menyimpan data di local storage browser
+        window.addEventListener('load', () => {
+            const savedPhoto = localStorage.getItem('ndaru_uploaded_photo');
+            if (savedPhoto) {
+                const profileImg = document.getElementById('profile-img');
+                if (profileImg) {
+                    profileImg.src = savedPhoto;
+                }
+            }
+        });
+
+        // Setup state data for interactive subsurface sections
+        const projectData = {
+            pertamina: {
+                title: "2D Seismic Mapping - PT Pertamina EP Cepu",
+                method: "Reflection Seismic Interpretation (RMS Amplitude & Cosine Phase)",
+                desc: "Processed 9 lines of 2D seismic dataset in the \"X\" structure. Delineated local structural geometry, mapping fault networks and determining reservoir thickness markers to isolate target horizons.",
+                bullets: [
+                    "Identified listric and normal faults defining the structural traps.",
+                    "Mapped gas/fluid indicator boundaries utilizing Root Mean Square (RMS) amplitude anomalies.",
+                    "Delineated carbonate facies transitions in the Banggai Basin."
+                ],
+                legend1: "High Amp Reservoir Indicator",
+                legend2: "Clay / Shale Matrix",
+                status: "RENDERING: SEISMIC REFLECTION INTERPRETATION (BANGGAI BASIN)"
+            },
+            palembang: {
+                title: "Inversi HVSR Palembang - Lapangan \"X\" (Anomali JOS 17)",
+                method: "HVSR (Horizontal to Vertical Spectral Ratio) Inversion & Vs Modeling",
+                desc: "Pemetaan Shear Wave Velocity (Vs) di bawah struktur antiklin (Lipatan) menggunakan metode inversi HVSR dari data ambient noise. Proyek penelitian ini berhasil mendeteksi anomali kecepatan rendah (Vs) di sekitar stasiun JOS 17 yang berasosiasi kuat sebagai zona akumulasi hidrokarbon/minyak bumi dangkal.",
+                bullets: [
+                    "Menganalisis 6 iris kedalaman Shear Wave Velocity (Vs50 hingga Vs500) secara vertikal.",
+                    "Menemukan anomali Vs rendah (<400 m/s) yang konsisten di bawah jalur Lipatan (Antiklin), tepatnya di stasiun JOS 17.",
+                    "Anomali Vs rendah pada kedalaman Vs100 - Vs300 menunjukkan kecocokan 100% sebagai prospek akumulasi minyak dangkal lokal."
+                ],
+                legend1: "Anomali Vs Rendah (Minyak Dangkal JOS 17)",
+                legend2: "Batuan Sedimen / Kecepatan Vs Sedang",
+                status: "RENDERING: KONTUR Vs DI BAWAH ANTIRIDGELINE (PALEMBANG)"
+            },
+            brin: {
+                title: "Water Table Mapping - BRIN",
+                method: "HVSR (Horizontal to Vertical Spectral Ratio) Inversion & Resistivity",
+                desc: "Collaborated with BRIN senior researchers in Pringsewu (Lampung) to locate groundwater tables for agricultural irrigation by marrying gravity residual anomalies with passive-source seismic nodes.",
+                bullets: [
+                    "Processed 115 ambient noise records with Horizontal to Vertical spectral ratios.",
+                    "Identified Vs low anomalies corresponding exactly with 3D geological water resistivity indicators.",
+                    "Mapped structural faults facilitating regional aquifer migrations."
+                ],
+                legend1: "Low Vs Aquifer Layer",
+                legend2: "Compact Sandstones",
+                status: "RENDERING: HVSR SHEAR-WAVE VELOCITY VS (LAMPUNG)"
+            },
+            thesis: {
+                title: "Bachelor Thesis: Shallow Gas Inversion",
+                method: "Low Frequency Passive Seismic (LFPS) Inversion",
+                desc: "Evaluated LFPS anomalies across West Kalimantan to map hydrocarbon anomalies at extremely shallow depths. Modeled spatial frequencies to isolate gas microseepage reservoirs.",
+                bullets: [
+                    "Isolated low frequency peak spectral anomalies indicating passive pressure signals.",
+                    "Constructed inversion profiles separating gas sand layers from compact clay caps.",
+                    "Formulated recommendation grids for low-cost shallow resource production."
+                ],
+                legend1: "LFPS Shallow Gas Pocket",
+                legend2: "Overburden Clays",
+                status: "RENDERING: LFPS PROPAGATION MODEL (W. KALIMANTAN)"
+            },
+            aquinas: {
+                title: "Landfill Contamination - Project Aquinas (GWB)",
+                method: "GPR (Ground Penetrating Radar) & Subsurface Resistivity",
+                desc: "Mapped aquifer and leach fluid migration paths escaping the TPA Cipayung landfill. Analyzed relative soil dielectric permittivity values to map ground-water contamination hazards.",
+                bullets: [
+                    "Acquired 100MHz electromagnetic pulse soundings across landfill boundaries.",
+                    "Mapped high-resistivity anomalies pointing to potential soil pollutant routes.",
+                    "Structured data models supporting community clean water irrigation projects."
+                ],
+                legend1: "Ground-water Leaching Zone",
+                legend2: "Saturated Basalt Rock",
+                status: "RENDERING: ELECTROMAGNETIC PROFILES (CIPAYUNG LANDFILL)"
+            }
+        };
+
+        let currentProjectKey = 'pertamina';
+        let palembangDepth = 50; // Dynamic state for Palembang contour maps
+        let customPulseTriggered = false;
+        let pulseTime = 0;
+
+        // Interactive Canvas Rendering Engine
+        const canvas = document.getElementById('subsurface-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Dynamic Resizing of Visualizer Canvas
+        function resizeCanvas() {
+            const container = canvas.parentElement;
+            canvas.width = container.clientWidth;
+            canvas.height = container.clientHeight;
+            drawSubsurface();
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        window.addEventListener('load', () => {
+            resizeCanvas();
+            initSeismicBackground();
+        });
+
+        // DRAW SUBSURFACE SCHEMATIC MODEL
+        function drawSubsurface() {
+            if (!ctx) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const w = canvas.width;
+            const h = canvas.height;
+
+            // Define layer offsets
+            const layer1Y = h * 0.35;
+            const layer2Y = h * 0.7;
+
+            // Reset standard lines
+            ctx.setLineDash([]);
+
+            if (currentProjectKey === 'palembang') {
+                drawPalembangContour(w, h);
+            } else {
+                ctx.fillStyle = '#0f172a';
+                ctx.fillRect(0, 0, w, h);
+
+                ctx.fillStyle = '#080c14';
+                ctx.fillRect(0, layer2Y, w, h - layer2Y);
+
+                // Draw Seismic wave background textures (wiggle traces)
+                ctx.strokeStyle = '#334155';
+                ctx.lineWidth = 0.5;
+                for (let x = 20; x < w; x += 40) {
+                    ctx.beginPath();
+                    for (let y = 0; y < h; y += 4) {
+                        const waveAmplitude = 10 * Math.sin(y * 0.05 + x);
+                        ctx.lineTo(x + waveAmplitude, y);
+                    }
+                    ctx.stroke();
+                }
+
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 0;
+
+                if (currentProjectKey === 'pertamina') {
+                    drawSeismicLayers(w, h, layer1Y, layer2Y);
+                } else if (currentProjectKey === 'brin') {
+                    drawAquiferLayers(w, h, layer1Y, layer2Y);
+                } else if (currentProjectKey === 'thesis') {
+                    drawGasDomeLayers(w, h, layer1Y, layer2Y);
+                } else if (currentProjectKey === 'aquinas') {
+                    drawContaminationLayers(w, h, layer1Y, layer2Y);
+                }
+
+                drawInteractiveNodes(w, h);
+            }
+        }
+
+        // Draw Pertamina Seismic Reflection Interpretation
+        function drawSeismicLayers(w, h, l1, l2) {
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2.5;
+            ctx.setLineDash([6, 4]);
+            ctx.beginPath();
+            ctx.moveTo(w * 0.35, 50);
+            ctx.lineTo(w * 0.65, h - 50);
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            ctx.fillStyle = 'rgba(125, 133, 140, 0.2)';
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(w, 0);
+            ctx.lineTo(w, l1 + 20);
+            ctx.lineTo(w * 0.55, l1);
+            ctx.lineTo(w * 0.5, l1 - 30);
+            ctx.lineTo(0, l1 - 30);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = 'rgba(239, 68, 68, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(0, l1 - 30);
+            ctx.lineTo(w * 0.5, l1 - 30);
+            ctx.lineTo(w * 0.55, l1);
+            ctx.lineTo(w, l1 + 20);
+            ctx.lineTo(w, l2 + 10);
+            ctx.lineTo(w * 0.55, l2 - 10);
+            ctx.lineTo(w * 0.5, l2 - 40);
+            ctx.lineTo(0, l2 - 40);
+            ctx.closePath();
+            ctx.fill();
+
+            if (customPulseTriggered) {
+                ctx.strokeStyle = '#0284c7';
+                ctx.lineWidth = 4;
+                ctx.beginPath();
+                ctx.arc(w * 0.5, h * 0.5, pulseTime % (w * 0.6), 0, Math.PI * 2);
+                ctx.stroke();
+            }
+
+            ctx.fillStyle = '#ef4444';
+            ctx.font = '10px JetBrains Mono';
+            ctx.fillText("NORMAL LISTRIC FAULT", w * 0.55, 75);
+        }
+
+        // Draw Palembang contour maps replicating the exact image data JOS17
+        function drawPalembangContour(w, h) {
+            const backGrad = ctx.createRadialGradient(w * 0.85, h * 0.45, 20, w * 0.5, h * 0.5, w * 0.8);
+            
+            if (palembangDepth === 50) {
+                backGrad.addColorStop(0, '#e35824');
+                backGrad.addColorStop(0.3, '#f59e0b');
+                backGrad.addColorStop(0.6, '#10b981');
+                backGrad.addColorStop(0.9, '#008ba3');
+                backGrad.addColorStop(1, '#0e4ca1');
+            } else if (palembangDepth === 100) {
+                backGrad.addColorStop(0, '#d13c11');
+                backGrad.addColorStop(0.3, '#f59e0b');
+                backGrad.addColorStop(0.5, '#10b981');
+                backGrad.addColorStop(0.85, '#0179a8');
+                backGrad.addColorStop(1, '#002f8c');
+            } else if (palembangDepth === 200) {
+                backGrad.addColorStop(0, '#c22106');
+                backGrad.addColorStop(0.2, '#f59e0b');
+                backGrad.addColorStop(0.45, '#10b981');
+                backGrad.addColorStop(0.7, '#005f9e');
+                backGrad.addColorStop(1, '#001a61');
+            } else if (palembangDepth === 300) {
+                backGrad.addColorStop(0, '#f59e0b');
+                backGrad.addColorStop(0.4, '#10b981');
+                backGrad.addColorStop(0.75, '#0086ab');
+                backGrad.addColorStop(1, '#02418a');
+            } else if (palembangDepth === 400) {
+                backGrad.addColorStop(0, '#10b981');
+                backGrad.addColorStop(0.5, '#007094');
+                backGrad.addColorStop(1, '#012a61');
+            } else if (palembangDepth === 500) {
+                backGrad.addColorStop(0, '#004c78');
+                backGrad.addColorStop(0.5, '#002f5c');
+                backGrad.addColorStop(1, '#00103b');
+            }
+
+            ctx.fillStyle = backGrad;
+            ctx.fillRect(0, 0, w, h);
+
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(w * 0.05, h * 0.45);
+            ctx.lineTo(w * 0.95, h * 0.75);
+            ctx.stroke();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 12px Inter';
+            ctx.save();
+            ctx.translate(w * 0.5, h * 0.6);
+            ctx.rotate(Math.atan2(h * 0.3, w * 0.9));
+            ctx.fillText("L I P A T A N  (A N T I C L I N E)", -100, -8);
+            ctx.restore();
+
+            const palStations = [
+                { x: w * 0.15, y: h * 0.25, name: "JOS3" },
+                { x: w * 0.45, y: h * 0.05, name: "JOS6" },
+                { x: w * 0.50, y: h * 0.12, name: "JOS7" },
+                { x: w * 0.72, y: h * 0.15, name: "JOS10" },
+                { x: w * 0.92, y: h * 0.22, name: "JOS9" },
+                { x: w * 0.60, y: h * 0.30, name: "JOS13" },
+                { x: w * 0.85, y: h * 0.38, name: "JOS14" },
+                { x: w * 0.42, y: h * 0.28, name: "JOS16" },
+                { x: w * 0.20, y: h * 0.55, name: "JOS17", isAnomaly: true },
+                { x: w * 0.35, y: h * 0.62, name: "JOS20" },
+                { x: w * 0.65, y: h * 0.64, name: "JOS15" },
+                { x: w * 0.12, y: h * 0.75, name: "JOS18" },
+                { x: w * 0.25, y: h * 0.85, name: "JOS19" },
+                { x: w * 0.52, y: h * 0.90, name: "JOS8" }
+            ];
+
+            palStations.forEach(s => {
+                ctx.fillStyle = '#000000';
+                ctx.beginPath();
+                ctx.moveTo(s.x, s.y - 6);
+                ctx.lineTo(s.x - 5, s.y + 4);
+                ctx.lineTo(s.x + 5, s.y + 4);
+                ctx.closePath();
+                ctx.fill();
+
+                if (s.isAnomaly) {
+                    ctx.fillStyle = '#ef4444';
+                    ctx.font = 'bold 11px JetBrains Mono';
+                    ctx.fillText(s.name, s.x - 14, s.y - 10);
+                    
+                    ctx.strokeStyle = '#f59e0b';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, 8 + 3 * Math.sin(Date.now() * 0.005), 0, Math.PI * 2);
+                    ctx.stroke();
+
+                    ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+                    ctx.strokeStyle = '#ef4444';
+                    ctx.lineWidth = 1;
+                    ctx.fillRect(s.x + 10, s.y - 30, 110, 20);
+                    ctx.strokeRect(s.x + 10, s.y - 30, 110, 20);
+
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 8px Inter';
+                    ctx.fillText("ANOMALI MINYAK", s.x + 15, s.y - 18);
+                } else {
+                    ctx.fillStyle = '#ff3333';
+                    ctx.font = '9px JetBrains Mono';
+                    ctx.fillText(s.name, s.x - 14, s.y - 8);
+                }
+            });
+
+            const scaleX = w - 35;
+            const scaleY = 35;
+            const scaleW = 12;
+            const scaleH = h - 70;
+
+            const scaleGrad = ctx.createLinearGradient(0, scaleY, 0, scaleY + scaleH);
+            scaleGrad.addColorStop(0, '#ef4444');
+            scaleGrad.addColorStop(0.25, '#f59e0b');
+            scaleGrad.addColorStop(0.5, '#eab308');
+            scaleGrad.addColorStop(0.75, '#10b981');
+            scaleGrad.addColorStop(1, '#0e4ca1');
+            ctx.fillStyle = scaleGrad;
+            ctx.fillRect(scaleX, scaleY, scaleW, scaleH);
+
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(scaleX, scaleY, scaleW, scaleH);
+
+            let maxVsLabel = "2500";
+            let minVsLabel = "200";
+            if (palembangDepth === 400) {
+                maxVsLabel = "1200";
+                minVsLabel = "100";
+            } else if (palembangDepth === 500) {
+                maxVsLabel = "240";
+                minVsLabel = "50";
+            }
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 8px JetBrains Mono';
+            ctx.fillText("Vs (m/s)", scaleX - 18, scaleY - 8);
+            ctx.fillText(maxVsLabel, scaleX - 25, scaleY + 6);
+            ctx.fillText(minVsLabel, scaleX - 18, scaleY + scaleH);
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(25, 20, w - 75, h - 40);
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 11px Inter';
+            ctx.fillText(`Peta Kontur Shear Wave Velocity ${palembangDepth}m (Vs${palembangDepth})`, 30, 35);
+        }
+
+        // Draw Aquifer Water table model
+        function drawAquiferLayers(w, h, l1, l2) {
+            ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
+            ctx.beginPath();
+            ctx.moveTo(0, l1 + 40);
+            for (let x = 0; x <= w; x += 40) {
+                ctx.lineTo(x, l1 + 30 + 20 * Math.sin(x * 0.015));
+            }
+            ctx.lineTo(w, l2);
+            ctx.lineTo(0, l2 + 30);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let x = 0; x <= w; x += 10) {
+                ctx.lineTo(x, l1 + 30 + 20 * Math.sin(x * 0.015));
+            }
+            ctx.stroke();
+
+            ctx.fillStyle = '#10b981';
+            ctx.font = '10px JetBrains Mono';
+            ctx.fillText("WATER TABLE (LOW Vs SHIFT)", 20, l1 + 10);
+        }
+
+        // Draw Dome Gas Shallow skripsi model
+        function drawGasDomeLayers(w, h, l1, l2) {
+            ctx.fillStyle = 'rgba(14, 165, 233, 0.2)';
+            ctx.beginPath();
+            ctx.moveTo(0, l2);
+            ctx.bezierCurveTo(w * 0.2, l1 - 60, w * 0.8, l1 - 60, w, l2);
+            ctx.lineTo(w, l2 + 40);
+            ctx.lineTo(0, l2 + 40);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.strokeStyle = '#0ea5e9';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(0, l2);
+            ctx.bezierCurveTo(w * 0.2, l1 - 60, w * 0.8, l1 - 60, w, l2);
+            ctx.stroke();
+
+            ctx.fillStyle = '#0ea5e9';
+            ctx.font = '10px JetBrains Mono';
+            ctx.fillText("SHALLOW GAS TRAP (ANTICLINE)", w * 0.32, l1 - 50);
+        }
+
+        // Draw Contamination Leak model (Project Aquinas)
+        function drawContaminationLayers(w, h, l1, l2) {
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(w * 0.1, 0, w * 0.4, 50);
+            
+            ctx.fillStyle = '#eab308';
+            ctx.font = '10px JetBrains Mono';
+            ctx.fillText("TPA CIPAYUNG LANDFILL DUMP", w * 0.1, 40);
+
+            const gradient = ctx.createRadialGradient(w * 0.3, 50, 10, w * 0.35, 120, 100);
+            gradient.addColorStop(0, 'rgba(234, 179, 8, 0.4)');
+            gradient.addColorStop(1, 'rgba(234, 179, 8, 0.0)');
+
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(w * 0.3, 60, 120, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.strokeStyle = '#eab308';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(w * 0.3, 70);
+            ctx.lineTo(w * 0.35, 120);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#eab308';
+            ctx.fillText("LEACHATE SEEPAGE FLOW", w * 0.38, 110);
+        }
+
+        const nodes = [
+            { xPct: 0.2, yPct: 0.4, label: "Core Horizon Marker", note: "Identified high density lithology boundaries." },
+            { xPct: 0.55, yPct: 0.3, label: "Reservoir Zone Target", note: "Anomalous signals show excellent resource trapping potential." },
+            { xPct: 0.8, yPct: 0.75, label: "Bedrock/Basement Layer", note: "Compact shale layers acting as regional seals." }
+        ];
+
+        function drawInteractiveNodes(w, h) {
+            nodes.forEach((n, index) => {
+                const nx = w * n.xPct;
+                const ny = h * n.yPct;
+
+                ctx.fillStyle = 'rgba(215, 113, 56, 0.25)';
+                ctx.beginPath();
+                ctx.arc(nx, ny, 12 + 4 * Math.sin(Date.now() * 0.003 + index), 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#d77138';
+                ctx.beginPath();
+                ctx.arc(nx, ny, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.arc(nx, ny, 6, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+        }
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+
+            const w = canvas.width;
+            const h = canvas.height;
+
+            if (currentProjectKey === 'palembang') {
+                const jos17X = w * 0.20;
+                const jos17Y = h * 0.55;
+                const dist = Math.hypot(clickX - jos17X, clickY - jos17Y);
+                if (dist < 20) {
+                    document.getElementById('visualizer-status').innerText = "STASIUN JOS 17: TARGET TERBUKTI MINYAK DENGAN Vs RENDAH DAN COCOK 100% DI BAWAH ANTICLINE!";
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(jos17X, jos17Y, 35, 0, Math.PI * 2);
+                    ctx.fill();
+                    setTimeout(drawSubsurface, 200);
+                }
+            } else {
+                nodes.forEach(n => {
+                    const nx = w * n.xPct;
+                    const ny = h * n.yPct;
+                    const distance = Math.hypot(clickX - nx, clickY - ny);
+
+                    if (distance < 18) {
+                        document.getElementById('visualizer-status').innerText = `NODE DISCOVERED: ${n.label.toUpperCase()} - ${n.note.toUpperCase()}`;
+                        ctx.fillStyle = '#ffffff';
+                        ctx.beginPath();
+                        ctx.arc(nx, ny, 30, 0, Math.PI * 2);
+                        ctx.fill();
+                        setTimeout(drawSubsurface, 150);
+                    }
+                });
+            }
+        });
+
+        let animationFrameId;
+        function updateVisualizerLoop() {
+            if (customPulseTriggered) {
+                pulseTime += 2;
+                if (pulseTime > canvas.width * 0.8) {
+                    customPulseTriggered = false;
+                }
+            }
+            drawSubsurface();
+            animationFrameId = requestAnimationFrame(updateVisualizerLoop);
+        }
+        updateVisualizerLoop();
+
+        function switchProject(key) {
+            currentProjectKey = key;
+            const item = projectData[key];
+
+            const buttons = ['pertamina', 'palembang', 'brin', 'thesis', 'aquinas'];
+            buttons.forEach(b => {
+                const el = document.getElementById(`btn-${b}`);
+                if (el) {
+                    el.className = "w-full text-left p-4 rounded-xl border border-slate-800 bg-slate-900/60 hover:bg-slate-800/80 text-slate-400 transition flex items-center justify-between group";
+                }
+            });
+
+            const activeBtn = document.getElementById(`btn-${key}`);
+            if (activeBtn) {
+                activeBtn.className = "w-full text-left p-4 rounded-xl border border-earth-500 bg-earth-500/10 text-white transition flex items-center justify-between group";
+            }
+
+            const depthSelector = document.getElementById('palembang-depth-selector');
+            if (key === 'palembang') {
+                depthSelector.classList.remove('hidden');
+                depthSelector.classList.add('flex');
+                
+                document.getElementById('legend-color-1').className = "w-3 h-2 bg-[#0e4ca1] rounded";
+                document.getElementById('legend-color-2').className = "w-3 h-2 bg-[#f59e0b] rounded";
+                document.getElementById('legend-line-style').className = "w-3 h-0.5 border-t-2 border-solid border-black";
+                
+                document.getElementById('legend-1').innerText = "Vs Rendah (Anomali Minyak JOS 17)";
+                document.getElementById('legend-2').innerText = "Vs Tinggi (Batuan Induk Padat)";
+                document.getElementById('legend-3').innerText = "Batas Struktur Lipatan";
+                document.getElementById('canvas-grid-unit').innerText = "SURFER COORDINATE SYSTEM: WGS84";
+            } else {
+                depthSelector.classList.add('hidden');
+                depthSelector.classList.remove('flex');
+                
+                document.getElementById('legend-color-1').className = "w-3 h-2 bg-gradient-to-r from-red-500 to-amber-500 rounded";
+                document.getElementById('legend-color-2').className = "w-3 h-2 bg-slate-700 rounded";
+                document.getElementById('legend-line-style').className = "w-3 h-0.5 border-t-2 border-dashed border-red-500";
+                
+                document.getElementById('legend-1').innerText = item.legend1;
+                document.getElementById('legend-2').innerText = item.legend2;
+                document.getElementById('legend-3').innerText = "Interpreted Faults";
+                document.getElementById('canvas-grid-unit').innerText = "GRID UNIT: METER (x100)";
+            }
+
+            document.getElementById('info-title').innerHTML = `<i class="fa-solid fa-square-poll-vertical text-earth-500 mr-2"></i> ${item.title}`;
+            document.getElementById('info-method').innerText = `Method: ${item.method}`;
+            document.getElementById('info-desc').innerText = item.desc;
+            
+            const bulletContainer = document.getElementById('info-bullets');
+            bulletContainer.innerHTML = '';
+            item.bullets.forEach(b => {
+                const li = document.createElement('li');
+                li.innerText = b;
+                bulletContainer.appendChild(li);
+            });
+
+            document.getElementById('visualizer-status').innerText = item.status;
+
+            // Update real uploader preview content specifically for current project
+            if (visualizerMode === 'real') {
+                setVisualizerMode('real'); 
+            }
+
+            triggerSeismicPulse();
+        }
+
+        function changePalembangDepth(depth) {
+            palembangDepth = depth;
+            
+            const depths = [50, 100, 200, 300, 400, 500];
+            depths.forEach(d => {
+                const btn = document.getElementById(`depth-btn-${d}`);
+                btn.className = "px-3 py-1 text-xs font-mono bg-slate-800 text-slate-300 rounded hover:bg-slate-700 border border-slate-700 transition";
+            });
+
+            const activeBtn = document.getElementById(`depth-btn-${depth}`);
+            activeBtn.className = "px-3 py-1 text-xs font-mono bg-earth-500 text-white rounded font-bold border border-earth-600 transition";
+            
+            drawSubsurface();
+            
+            document.getElementById('visualizer-status').innerText = `MENAMPILKAN IRISAN KEDALAMAN: Vs${depth} (${depth} METER) - LOKASI ANTICLINE`;
+        }
+
+        function triggerSeismicPulse() {
+            customPulseTriggered = true;
+            pulseTime = 0;
+        }
+
+        function resetCanvasView() {
+            customPulseTriggered = false;
+            pulseTime = 0;
+            if (currentProjectKey === 'palembang') {
+                changePalembangDepth(50);
+            } else {
+                document.getElementById('visualizer-status').innerText = projectData[currentProjectKey].status;
+            }
+        }
+
+        function initSeismicBackground() {
+            const heroCanvas = document.getElementById('seismic-canvas');
+            if (!heroCanvas) return;
+            const hCtx = heroCanvas.getContext('2d');
+            
+            function resizeHeroCanvas() {
+                heroCanvas.width = heroCanvas.parentElement.clientWidth;
+                heroCanvas.height = heroCanvas.parentElement.clientHeight;
+            }
+            resizeHeroCanvas();
+            window.addEventListener('resize', resizeHeroCanvas);
+
+            let offset = 0;
+            function animateBackground() {
+                hCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+                hCtx.strokeStyle = 'rgba(215, 86, 43, 0.12)';
+                hCtx.lineWidth = 1;
+
+                const step = 35;
+                for (let x = 0; x < heroCanvas.width; x += step) {
+                    hCtx.beginPath();
+                    for (let y = 0; y < heroCanvas.height; y += 8) {
+                        const noise = 15 * Math.sin(y * 0.007 + offset + x * 0.02) * Math.cos(x * 0.004);
+                        hCtx.lineTo(x + noise, y);
+                    }
+                    hCtx.stroke();
+                }
+
+                offset += 0.015;
+                requestAnimationFrame(animateBackground);
+            }
+            animateBackground();
+        }
+
+        function copyToClipboard(text) {
+            const dummy = document.createElement("input");
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand("copy");
+            document.body.removeChild(dummy);
+            
+            const visualizerStatus = document.getElementById('visualizer-status');
+            if (visualizerStatus) {
+                visualizerStatus.innerText = `COPIED: "${text}" successfully to clipboard!`;
+            }
+        }
+
+        const emailTemplates = {
+            interview: {
+                subject: "Geophysics Role Offer - Ndaru Ria Putri",
+                body: "Dear Ndaru Ria Putri,\n\nI reviewed your excellent geophysics portfolio. Our technical team was highly impressed by your experience with Pertamina and BRIN, especially your work with seismic mapping and water tables.\n\nWe would love to invite you to a technical interview session to discuss upcoming opportunities at our company [Company Name].\n\nBest Regards,\nRecruiting Team"
+            },
+            consulting: {
+                subject: "Geoscience Project Collaboration Survey",
+                body: "Hello Ndaru,\n\nWe are currently planning a subsurface resource survey project in [Company Name] and noticed your strong research credentials in GPR and water aquifer analysis.\n\nCould we arrange a short call to discuss your availability for technical consultation work?\n\nSincerely,"
+            },
+            chat: {
+                subject: "Informal Geophysics Career Discussion",
+                body: "Hi Ndaru,\n\nI'm an HR Talent Acquisition from [Company Name]. I found your impressive profile as UI geophysics candidate and would love to invite you to an casual virtual coffee chat to discuss potential geoscience career paths in our company.\n\nCheers,"
+            }
+        };
+
+        function updateEmailTemplate() {
+            const type = document.getElementById('email-type').value;
+            const company = document.getElementById('company-input').value || "[Your Company]";
+            
+            let subject = emailTemplates[type].subject;
+            let body = emailTemplates[type].body.replace("[Company Name]", company);
+
+            document.getElementById('email-preview-subject').innerText = subject;
+            document.getElementById('email-preview-body').innerText = body;
+        }
+
+        function sendEmailDirect() {
+            const type = document.getElementById('email-type').value;
+            const company = document.getElementById('company-input').value || "[Your Company]";
+            const subject = emailTemplates[type].subject;
+            const body = encodeURIComponent(emailTemplates[type].body.replace("[Company Name]", company));
+            
+            window.location.href = `mailto:riaputrind08@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+        }
+
+        updateEmailTemplate();
+
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
